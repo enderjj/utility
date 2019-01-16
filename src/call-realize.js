@@ -1,6 +1,8 @@
 Function.prototype.call2 = function (obj) {
   var object = obj || window;
+
   object.func = this; // 将当前执行的函数赋值给 obj.func 属性
+
   var args = []; // 用来保存传入的参数
 
   // 将第二个至最后一个参数保存在 args 数组中
