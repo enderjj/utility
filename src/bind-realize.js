@@ -7,15 +7,15 @@ Function.prototype.bind2 = function (obj) {
   var funcObj = this; // 获取调用 bind2 的函数对象
 
   var args = Array.prototype.slice.call(arguments, 1); // 如果有参数，就获取参数
-  function TransferFunc() { }; //中转函数
+  function transferFunc() { }; //中转函数
 
   var returnFunc = function () {
     var funcArgs = Array.prototype.slice.call(arguments); // 获取传入 returnFunc 的参数
-    return funcObj.apply(this instanceof TransferFunc ? this : obj, args.concat(funcArgs)); // 执行函数
+    return funcObj.apply(this instanceof transferFunc ? this : obj, args.concat(funcArgs)); // 执行函数
   }
 
-  TransferFunc.prototype = funcObj.prototype;
-  returnFunc.prototype = new TransferFunc();
+  transferFunc.prototype = funcObj.prototype;
+  returnFunc.prototype = new transferFunc();
 
   return returnFunc;
 }
